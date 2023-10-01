@@ -8,7 +8,7 @@ const GitLabApi = {}
 GitLabApi.install = (Vue, options) => {
   Vue.prototype.$api = async (path, params = {}, behaviour = {}, method = 'GET') => {
     const response = await axios(path, {
-      baseURL: Config.root.gitlabApi,
+      baseURL: Config.root.apiUrl,
       method: method,
       params,
       headers: { 'Private-Token': Config.root.privateToken }
@@ -33,7 +33,7 @@ export default GitLabApi
 
 export function configureApi() {
   Vue.use(GitLabApi, {
-    gitlab_api_url: Config.root.gitlabApi,
+    api_url: Config.root.apiUrl,
     private_token: Config.root.privateToken
   })
 }
